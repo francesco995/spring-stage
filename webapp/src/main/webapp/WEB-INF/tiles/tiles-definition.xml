@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE tiles-definitions PUBLIC  
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+	<definition name="main.layout" template="/WEB-INF/tiles/template/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp" />
+		<put-attribute name="container-top" value="/WEB-INF/tiles/template/container-top.jsp" />
+		<put-attribute name="container-bottom" value="/WEB-INF/tiles/template/container-bottom.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
+	</definition>
+	
+	<definition name="home" extends="main.layout" />
+	
+	<definition name="customersTiles" extends="main.layout">
+		<put-attribute name="container-top" value="/WEB-INF/tiles/customersDetails.jsp" />
+		<put-attribute name="container-bottom" value="/WEB-INF/tiles/gotoAddCustomer.jsp" />
+	</definition>
+
+	<definition name="customerFormTiles" extends="main.layout">
+		<put-attribute name="container-top" value="/WEB-INF/tiles/customerForm.jsp" />
+		<put-attribute name="container-bottom" value="/WEB-INF/tiles/gotoCustomersList.jsp" />
+	</definition>
+
+
+</tiles-definitions>

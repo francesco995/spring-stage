@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="domainObjectsCatalog" class="com.objectway.stage.model.JsonDomainObjectsCatalog"
+		init-method="init" />
+
+	<bean id="domainObjectsCatalog2" class="com.objectway.stage.model.JsonDomainObjectsCatalog"
+		init-method="init" />
+
+	<bean class="com.objectway.stage.model.DomainObjects"
+		factory-method="get">
+		<property name="catalog" ref="domainObjectsCatalog" />
+	</bean>
+
+	<bean id="listContainer" class="com.objectway.stage.example.ExampleListContainer">
+		<property name="myList" ref="laMiaLista" />
+	</bean>
+
+	<bean id="laMiaLista_old" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>Stringa1</value>
+				<value>Stringa2</value>
+				<value>Stringa3</value>
+				<value>Stringa4</value>
+				<value>Stringa5</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<util:list id="laMiaLista">
+		<value>Stringa1</value>
+		<value>Stringa2</value>
+		<value>Stringa3</value>
+		<value>Stringa4</value>
+		<value>Stringa5</value>
+	</util:list>
+	
+	<util:properties id="customersSource" location="classpath:/customers.properties"/>
+	
+	<bean id="importer" class="com.objectway.stage.example.CustomersImporter">
+		<constructor-arg ref="customersSource" />
+	</bean>
+</beans>
